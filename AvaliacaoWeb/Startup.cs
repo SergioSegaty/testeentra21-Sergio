@@ -29,6 +29,9 @@ namespace AvaliacaoWeb
                 options.SerializerSettings.Converters.Add(new TelefoneConverter());
             }); ;
 
+
+            services.AddTransient(typeof(IManipuladorBancoDeDados), typeof(ManipuladorSqlite));
+
             //PLUS: Neste projeto não é utilizado injeção de dependencia. Pode ser implementado. Sujiro que mesmo que não implmente aqui, leia um pouco sobre.
         }
 
