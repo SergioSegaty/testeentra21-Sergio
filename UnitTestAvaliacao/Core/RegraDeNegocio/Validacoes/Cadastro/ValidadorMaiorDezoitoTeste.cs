@@ -11,19 +11,19 @@ namespace UnitTestAvaliacao.Core.RegraDeNegocio.Validacoes.Cadastro
         public void dado_um_cadastro_cuja_idade_menor_de_18_anos_deve_ser_invalida()
         {
             var cadastro = new AvaliacaoCore.DB.Model.Cadastro();
-            cadastro.DataNascimento = DateTime.Now.AddYears(-18).AddDays(1);
+            cadastro.DataNascimento = DateTime.Now.AddYears(-18).AddDays(-1);
             var validador = new ValidadorMaiorDezoito();
             var resultado = validador.Validar(cadastro);
 
             Assert.IsFalse(resultado.Valido);
-            StringAssert.Contains(resultado.Mensagem, "18 anos");
+            StringAssert.Contains(resultado.Mensagem, "É necessário ser maior de 18 anos");
         }
 
         [TestMethod]
         public void dado_um_cadastro_cuja_idade_maior_de_18_anos_deve_ser_valida()
         {
             var cadastro = new AvaliacaoCore.DB.Model.Cadastro();
-            cadastro.DataNascimento = DateTime.Now.AddYears(-18);
+            cadastro.DataNascimento = DateTime.Now.AddYears(-18).AddDays(1);
             var validador = new ValidadorMaiorDezoito();
             var resultado = validador.Validar(cadastro);
 
