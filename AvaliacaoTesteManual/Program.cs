@@ -15,7 +15,7 @@ namespace AvaliacaoTesteManual
             var inicializador = new InicializadorBancoDeDados(manipulador);
             inicializador.Iniciar();
 
-            CriarRegistros(manipulador, 255, "SC");
+            CriarRegistros(manipulador, 255, "RS");
         }
 
         public static void CriarRegistros(ManipuladorSqlite man, int qtd, string uf)
@@ -30,6 +30,7 @@ namespace AvaliacaoTesteManual
                     HoraCadastro = DateTime.Now.AddMinutes(i * -7),
                     Nome = Nomes[i % Nomes.Count] + " " + Nomes[i*255 % Nomes.Count],
                     RG = 2555555,
+                    Email = "algumacoisa@alguma.com.br",
                     UF = "uf"
                 });
             }
