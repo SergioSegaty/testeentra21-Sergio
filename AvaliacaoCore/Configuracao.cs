@@ -35,5 +35,6 @@ namespace AvaliacaoCore
 
         public bool EhSantaCatarina => UF == "sc";
         public bool EhParana => UF == "pr";
+        public bool EhRioGrandeDoSul => UF == "rs";
     }
 }
