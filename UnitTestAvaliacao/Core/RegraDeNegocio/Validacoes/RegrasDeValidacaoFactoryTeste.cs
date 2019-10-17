@@ -48,6 +48,15 @@ namespace UnitTestAvaliacao.Core.RegraDeNegocio.Validacoes
             Assert.AreEqual(validadores.Count(v => v.GetType() == typeof(ValidadorMaiorDezoito)), 0);
         }
 
+        [TestMethod]
+        public void dado_uma_configuuracao_de_rs_deve_ter_o_validador_de_email()
+        {
+            var config = DadoUmaConfiguracao("RS");
+            var factory = new RegrasDeValidacaoFactory();
+            var validadores = factory.ObterValidadoresCadastro(config);
+            Assert.AreEqual(validadores.Count(v => v.GetType() == typeof(ValidadorEmail)), 1);
+        }
+
         private Configuracao DadoUmaConfiguracao(string uf)
         {
             ConfiguracaoParaTeste.Inicializar(uf);
