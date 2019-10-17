@@ -8,18 +8,27 @@ namespace AvaliacaoCore.RegraDeNegocio.Validacoes.Cadastro
         {
             //TESTE: Esse código é péssimo, existem maneiras melhores de verificar se o cliente tem mais de 18 anos.
             //Reescreva este código de modo que ele seja "melhor".
+            #region CodigoAntigo
+            //var anos = DateTime.Now.Year - model.DataNascimento.Year;
+            //if (anos > 18) return Valido();
+            //if (anos < 18) return Invalido();
 
-            var anos = DateTime.Now.Year - model.DataNascimento.Year;
-            if (anos > 18) return Valido();
-            if (anos < 18) return Invalido();
+            //var meses = DateTime.Now.Month - model.DataNascimento.Month;
+            //if (meses > 0) return Valido();
+            //if (meses < 0) return Invalido();
 
-            var meses = DateTime.Now.Month - model.DataNascimento.Month;
-            if (meses > 0) return Valido();
-            if (meses < 0) return Invalido();
+            //var dias = DateTime.Now.Day - model.DataNascimento.Day;
+            //if (dias >= 0) return Valido();
+            //return Invalido();
+            //return Valido();
+            #endregion
 
-            var dias = DateTime.Now.Day - model.DataNascimento.Day;
-            if (dias >= 0) return Valido();
-            return Invalido();
+            // Reescrito
+            var dataMinimaPara18 = DateTime.Now.AddYears(-18);
+            if (model.DataNascimento < dataMinimaPara18)
+                return Invalido();
+
+            return Valido();
         }
 
         private ResultadoValidacao Valido()
