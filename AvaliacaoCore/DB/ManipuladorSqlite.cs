@@ -2,7 +2,6 @@
 using AvaliacaoCore.DB.Map;
 using AvaliacaoCore.DB.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace AvaliacaoCore.DB
 {
@@ -30,9 +29,6 @@ namespace AvaliacaoCore.DB
 
         public void AdicionarCadastro(Cadastro cadastro)
         {
-            cadastro.UF = Configuracao.Instancia.UF;
-            cadastro.HoraCadastro = DateTime.Now;
-
             Cadastros.Add(cadastro);
             SaveChanges();
         }
