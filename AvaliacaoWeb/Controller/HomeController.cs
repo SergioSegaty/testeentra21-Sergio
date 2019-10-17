@@ -35,9 +35,9 @@ namespace AvaliacaoWeb.Controller
                 return Json(msg);
             }
 
-            novoCadastro.UF = Configuracao.Instancia.UF;
-            novoCadastro.HoraCadastro = DateTime.Now;
-            
+            //novoCadastro.UF = Configuracao.Instancia.UF;
+            //novoCadastro.HoraCadastro = DateTime.Now;
+
             manipulador.AdicionarCadastro(novoCadastro);
             return Json("");
         }
@@ -63,10 +63,22 @@ namespace AvaliacaoWeb.Controller
         {
             //TESTE: aqui se utiliza desta constante, para permitir todos os horários do dia final da pesquisa. Isso não é a melhor maneira de fazer isso.
             //Além disso, existe um problema nas comparações feitas.
-            //Faça as coreções e alterações que achar necessária.
+            //Faça as correções e alterações que achar necessária.
 
             //Dica: há um outro TESTE que requer adicionar um filtro, então vai ser necessário adicionar aqui.
-            const int de23h59m59s = 86399;
+           // const int de23h59m59s = 86399;
+           /*
+            * Se o problema da constante é ter sempre esse numero de horas. Acredito que seja mais simples e bem melhor de se visiualizar em DateTime
+            * Ao invés de adicionar a constante de 23h 59m e 59s, eu adicionei um dia inteiro, e retirei 1 segundo.
+            * 
+            * 
+            * 
+            */
+
+
+
+
+            //
             if (!string.IsNullOrWhiteSpace(pesquisa.Nome))
             {
                 busca.NomeLike(pesquisa.Nome);
@@ -74,21 +86,26 @@ namespace AvaliacaoWeb.Controller
 
             if (pesquisa.CadastroDe.HasValue)
             {
-                busca.Propriedade(x => x.HoraCadastro > pesquisa.CadastroDe);
+                busca.Propriedade(x => x.HoraCadastro >= pesquisa.CadastroDe);
             }
             if (pesquisa.CadastroAte.HasValue)
             {
-                busca.Propriedade(x => x.HoraCadastro < pesquisa.CadastroAte.Value.AddSeconds(de23h59m59s));
+                busca.Propriedade(x => x.HoraCadastro <= pesquisa.CadastroAte.Value.AddDays(1).AddSeconds(-1));
             }
 
             if (pesquisa.NascimentoDe.HasValue)
             {
-                busca.Propriedade(x => x.DataNascimento > pesquisa.NascimentoDe);
+                busca.Propriedade(x => x.DataNascimento  >= pesquisa.NascimentoDe);
             }
             if (pesquisa.NascimentoAte.HasValue)
             {
-                busca.Propriedade(x => x.DataNascimento < pesquisa.NascimentoAte.Value.AddSeconds(de23h59m59s));
+                busca.Propriedade(x => x.DataNascimento <= pesquisa.NascimentoAte.Value.AddDays(1).AddSeconds(-1));
             }
+            // Adicionado filtro por CPF
+            if (!string.IsNullOrWhiteSpace(pesquisa.CPF.ToString()))
+            {
+                busca.CpfLike(pesquisa.CPF.ToString());
+            }           
         }
         
         public IActionResult Cadastro()
