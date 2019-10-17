@@ -14,6 +14,7 @@ namespace AvaliacaoCore.DB.Model
         public DateTime HoraCadastro { get; set; }
         public DateTime DataNascimento { get; set; }
         public IList<Telefone> Telefones { get; set; }
+        public string Email { get; set; }
 
         public Cadastro()
         {
