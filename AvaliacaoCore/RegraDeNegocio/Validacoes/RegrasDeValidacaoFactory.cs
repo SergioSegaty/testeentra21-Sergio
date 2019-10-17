@@ -14,7 +14,7 @@ namespace AvaliacaoCore.RegraDeNegocio.Validacoes
                 new ValidadorNome(),
                 new ValidadorCPF(),
                 new ValidadorDataNascimento(),
-                new ValidadorTelefone()
+                new ValidadorTelefone(),
             };
 
             //TESTE: Implemente: caso seja do rio grande do sul (rs), o cliente é obrigado a ter email cadastrado;
@@ -28,6 +28,10 @@ namespace AvaliacaoCore.RegraDeNegocio.Validacoes
                 case "sc":
                     validacoes.Add(new ValidadorRG());
                     break;
+                case "rs":
+                    validacoes.Add(new ValidadorEmail());
+                    break;
+                    
             }
 
             return validacoes;
