@@ -10,6 +10,7 @@ namespace AvaliacaoCore.DB.Map
             modelBuilder.Entity<Cadastro>().HasKey(x => x.Id);
             modelBuilder.Entity<Cadastro>().Property(x => x.CPF).IsRequired();
             modelBuilder.Entity<Cadastro>().Property(x => x.RG).IsRequired(false);
+            modelBuilder.Entity<Cadastro>().Property(x => x.Email).IsRequired(false);
             modelBuilder.Entity<Cadastro>().Property(x => x.DataNascimento).IsRequired();
             modelBuilder.Entity<Cadastro>().Property(x => x.HoraCadastro).IsRequired();
             modelBuilder.Entity<Cadastro>().Property(x => x.Nome).IsRequired().HasMaxLength(255);
