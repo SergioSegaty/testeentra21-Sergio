@@ -25,7 +25,7 @@ namespace AvaliacaoCore.RegraDeNegocio.Validacoes.Cadastro
 
             // Reescrito
             var dataMinimaPara18 = DateTime.Now.AddYears(-18);
-            if (model.DataNascimento < dataMinimaPara18)
+            if (model.DataNascimento > dataMinimaPara18)
                 return Invalido();
 
             return Valido();
