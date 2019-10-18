@@ -194,6 +194,9 @@
     }
 
     static formularioCorreto() {
+        debugger;
+        var email = $("#EmailCliente").val();
+        var reggex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (!$("#CPFCliente").val() || $("#CPFCliente").hasClass('invalid')) {
             $("#CPFCliente").addClass('invalid');
             return false;
@@ -204,7 +207,7 @@
         } else {
             $("#nomeCliente").removeClass('invalid');
         }
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($("#EmailCliente").val)) {
+        if (reggex.test(email)) {
             $("#EmailCliente").removeClass('invalid');
         } else {
             $("#EmailCliente").addClass('invalid');
