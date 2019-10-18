@@ -74,16 +74,17 @@ namespace AvaliacaoWeb.Controller
             * 
             * 
             */
-
-
-
-
             //
+
             if (!string.IsNullOrWhiteSpace(pesquisa.Nome))
             {
                 busca.NomeLike(pesquisa.Nome);
             }
-
+            // Adicionado filtro por CPF
+            if (!string.IsNullOrWhiteSpace(pesquisa.CPF.ToString()))
+            {
+                busca.CpfLike(pesquisa.CPF.ToString());
+            }           
             if (pesquisa.CadastroDe.HasValue)
             {
                 busca.Propriedade(x => x.HoraCadastro >= pesquisa.CadastroDe);
@@ -101,11 +102,6 @@ namespace AvaliacaoWeb.Controller
             {
                 busca.Propriedade(x => x.DataNascimento <= pesquisa.NascimentoAte.Value.AddDays(1).AddSeconds(-1));
             }
-            // Adicionado filtro por CPF
-            if (!string.IsNullOrWhiteSpace(pesquisa.CPF.ToString()))
-            {
-                busca.CpfLike(pesquisa.CPF.ToString());
-            }           
         }
         
         public IActionResult Cadastro()
