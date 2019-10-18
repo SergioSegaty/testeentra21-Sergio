@@ -32,14 +32,15 @@
     return $(id).val() || null;
   }
 
-  static pesquisar(pagina) {
+    static pesquisar(pagina) {
     var pesquisa = {
       Pagina: pagina || 1,
       NascimentoDe: Consulta.obterData("dataNasceDe"),
       NascimentoAte: Consulta.obterData("dataNasceAte"),
       CadastroDe: Consulta.obterData("dataCadDe"),
       CadastroAte: Consulta.obterData("dataCadAte"),
-      Nome: $("#nomeCliente").val()
+      Nome: $("#nomeCliente").val(),
+      Cpf: $("#cpfCliente").val()
     }
     $('table tbody tr').remove();
     var load = (tb) => {
