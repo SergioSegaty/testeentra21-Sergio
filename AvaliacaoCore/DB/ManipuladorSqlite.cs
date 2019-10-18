@@ -15,7 +15,7 @@ namespace AvaliacaoCore.DB
             Database.EnsureCreated();
         }
 
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionbuilder)
         {
             optionbuilder.UseSqlite(@"Data Source="+ Constantes.NomeArquivoBanco);
@@ -30,9 +30,8 @@ namespace AvaliacaoCore.DB
 
         public void AdicionarCadastro(Cadastro cadastro)
         {
-            cadastro.UF = Configuracao.Instancia.UF;
             cadastro.HoraCadastro = DateTime.Now;
-
+            //cadastro.UF = 
             Cadastros.Add(cadastro);
             SaveChanges();
         }
@@ -46,6 +45,6 @@ namespace AvaliacaoCore.DB
         {
             return new BuscaComFiltro<Cadastro>(Cadastros);
         }
-        
+
     }
 }
