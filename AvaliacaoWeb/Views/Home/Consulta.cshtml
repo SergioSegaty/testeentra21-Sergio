@@ -40,7 +40,12 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="cpfCliente">Cpf contém</label>
-                <input type="text" class="form-control" id="cpfCliente" placeholder="000.000.000-00">
+                <input type="text" class="form-control" id="cpfCliente"
+                       onchange="Consulta.cpfFormat(event)"
+                       onkeypress="Consulta.cpfFormat(event)"
+                       onkeyup="Consulta.cpfFormat(event)"
+                       onkeydown="Consulta.cpfFormat(event)"
+                       placeholder="000.000.000-00">
             </div>
             <div class="form-group col-md-3">
                 <label for="dataNasce">Cadastrado depois de</label>
