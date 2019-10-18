@@ -27,11 +27,11 @@ namespace AvaliacaoTesteManual
                 man.AdicionarCadastro(new Cadastro
                 {
                     Telefones = new Telefone[] { new Telefone("47987654321") },
-                    CPF = 01234567890,
+                    CPF = 72280277018,
                     DataNascimento = new DateTime(1990, 1, 1).AddDays(i * 3),
                     HoraCadastro = DateTime.Now.AddMinutes(i * -7),
                     Nome = Nomes[i % Nomes.Count] + " " + Nomes[i*255 % Nomes.Count],
-                    RG = 2555555,
+                    RG = 160954022,
                     Email = "algumacoisa@alguma.com",
                     UF = uf
                 });
