@@ -27,12 +27,24 @@ namespace AvaliacaoCore.DB.Model
         }
 
         //PLUS: eiste uma maneira de fazer o código entender diretamente que uma string pode ser um número de Telefone, possibilitando algo como: Telefone tel = "9922223333";
+        // Este método seria a Interpolação de Strings? Interpolando, e colocando o valor de Numero(long) dentro de uma interpolação de texto, eu transformo o numero em string.
+            
         //implemente o código necessário para isso.
 
         public override string ToString()
         {
             //TESTE: Este ToString é bem ruim, e queremos que a string do telefone seja o formato (99) 9999-9999 OU (99) 99999-9999, encontre uma boa maneira, legível de fazer isto.
-            return "" + DDD + " " + Numero;
+
+            var primeiraParte = Numero.ToString();
+            var segundaParte = primeiraParte.Substring(primeiraParte.Length - 4);
+            if (primeiraParte.Length == 8)
+                primeiraParte = primeiraParte.Substring(0, 4);
+            else if (primeiraParte.Length == 9)
+                primeiraParte = primeiraParte.Substring(0, 5);
+            
+            
+            var numeroFormatado = $"({DDD}) {primeiraParte}-{segundaParte}";
+            return numeroFormatado;
         }
     }
 }
