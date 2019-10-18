@@ -35,7 +35,7 @@ namespace AvaliacaoWeb.Controller
                 return Json(msg);
             }
 
-            //novoCadastro.UF = Configuracao.Instancia.UF;
+            novoCadastro.UF = Configuracao.Instancia.UF;
             //novoCadastro.HoraCadastro = DateTime.Now;
 
             manipulador.AdicionarCadastro(novoCadastro);
