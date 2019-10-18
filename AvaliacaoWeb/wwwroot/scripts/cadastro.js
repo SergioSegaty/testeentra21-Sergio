@@ -197,8 +197,8 @@
         debugger;
         var email = $("#EmailCliente").val();
         var reggex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!$("#CPFCliente").val() || $("#CPFCliente").hasClass('invalid')) {
-            $("#CPFCliente").addClass('invalid');
+        if (!$("#cpfCliente").val() || $("#cpfCliente").hasClass('invalid')) {
+            $("#cpfCliente").addClass('invalid');
             return false;
         }
         if (!$("#nomeCliente").val() || $("#nomeCliente").val().indexOf(" ") === -1) {
@@ -240,7 +240,7 @@
     static obterValores() {
         var cadastro = {};
         cadastro.RG = ($("#RGCliente").val() || "").replace(/\D/g, "");
-        cadastro.CPF = $("#CPFCliente").val().replace(/\D/g, "");
+        cadastro.CPF = $("#cpfCliente").val().replace(/\D/g, "");
         cadastro.Nome = $("#nomeCliente").val();
         cadastro.DataNascimento = $("#dataNasce").val();
         cadastro.Telefones = [];
