@@ -139,16 +139,24 @@
                 r.append(col);
             };
 
+            let cpfFormatado = c.cpf;
+            cpfFormatado = String(cpfFormatado);
+            cpfFormatado = cpfFormatado.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+            
+
             carregaColuna(c.nome, row);
-            carregaColuna(c.cpf, row);
+            carregaColuna(cpfFormatado, row);
             carregaColuna(moment(c.dataNascimento).format("DD/MM/YYYY"), row);
             carregaColuna(moment(c.horaCadastro).format("DD/MM/YYYY HH:mm:ss"), row);
             if (bRG)
                 carregaColuna(c.rg, row);
             criarTelefones(c.telefones, row);
-
             tb.append(row);
         }
+
+       
+
+
 
         $.ajax({
             type: "POST",
