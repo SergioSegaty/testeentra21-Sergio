@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using AvaliacaoCore.DB;
 using AvaliacaoCore.DB.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace AvaliacaoTesteManual
 {
@@ -15,8 +16,9 @@ namespace AvaliacaoTesteManual
             var inicializador = new InicializadorBancoDeDados(manipulador);
             inicializador.Iniciar();
 
-            CriarRegistros(manipulador, 255, "SC");
+            CriarRegistros(manipulador, 255, "RS");
         }
+
 
         public static void CriarRegistros(ManipuladorSqlite man, int qtd, string uf)
         {
