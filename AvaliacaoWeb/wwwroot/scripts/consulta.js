@@ -117,7 +117,7 @@
         var $campoRG = $("#rgCliente").val();
         debugger;
         var $rg = "";
-        if ($campoRG = undefined) {
+        if ($campoRG = "undefined") {
             $rg = "";
         } else {
 
