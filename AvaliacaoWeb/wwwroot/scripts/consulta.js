@@ -83,6 +83,39 @@
         evt.target.value = builder.join('');
     }
 
+    static rgFormat(evt) {
+        var numeroRG = evt.target.value.replace(/\D/g, "");
+        numeroRG = numeroRG.substring(0, 9);
+        if (numeroRG.length != 9) {
+            $(evt.target).addClass("invalid");
+        } else {
+            $(evt.target).removeClass("invalid");
+        }
+        var builder = [];
+        if (numeroRG.length <= 2) {
+            builder.push(numeroRG)
+        } else {
+            builder.push(numeroRG.substr(0, 2));
+            builder.push('.');
+            if (numeroRG.length <= 5) {
+                builder.push(numeroRG.substr(2));
+            } else {
+                builder.push(numeroRG.substr(2, 3));
+                builder.push('.');
+                if (numeroRG.length <= 8) {
+                    builder.push(numeroRG.substr(5));
+                } else {
+                    builder.push(numeroRG.substr(5, 3));
+                    if (numeroRG.length === 9) {
+                        builder.push('-');
+                        builder.push(numeroRG.substr(8));
+                    }
+                }
+            }
+        }
+        evt.target.value = builder.join('');
+    }
+
 
     static pesquisar(pagina) {
         var pesquisa = {
@@ -92,7 +125,8 @@
             CadastroDe: Consulta.obterData("dataCadDe"),
             CadastroAte: Consulta.obterData("dataCadAte"),
             Nome: $("#nomeCliente").val(),
-            Cpf: $("#cpfCliente").val().replace(/\D/g, "")
+            Cpf: $("#cpfCliente").val().replace(/\D/g, ""),
+            Rg: $("#rgCliente").val().replace(/\D/g, "")
         }
         $('table tbody tr').remove();
         var load = (tb) => {
@@ -139,9 +173,11 @@
                 r.append(col);
             };
 
-            let cpfFormatado = c.cpf;
-            cpfFormatado = String(cpfFormatado);
+            
+            let cpfFormatado = String(c.cpf);
             cpfFormatado = cpfFormatado.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+            let rgFormatado = String(c.rg);
+            rgFormatado = rgFormatado.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4");
             
 
             carregaColuna(c.nome, row);
@@ -149,7 +185,7 @@
             carregaColuna(moment(c.dataNascimento).format("DD/MM/YYYY"), row);
             carregaColuna(moment(c.horaCadastro).format("DD/MM/YYYY HH:mm:ss"), row);
             if (bRG)
-                carregaColuna(c.rg, row);
+                carregaColuna(rgFormatado, row);
             criarTelefones(c.telefones, row);
             tb.append(row);
         }
