@@ -241,17 +241,11 @@
         } else {
             $("#nomeCliente").removeClass('invalid');
         }
-        if (reggex.test(email)) {
+        if (reggex.test(email) || !$("#EmailCliente").val()) {
             $("#EmailCliente").removeClass('invalid');
         } else {
             $("#EmailCliente").addClass('invalid');
             return false;
-        }
-        if (!$("#EmailCliente").val().length === 0) {
-            $("#EmailCliente").addClass('invalid');
-            return false;
-        } else {
-            $("#EmailCliente").removeClass('invalid');
         }
         if ($("#RGCliente").length == 1 && !$("#RGCliente").val()) {
             $("#RGCliente").addClass('invalid');
