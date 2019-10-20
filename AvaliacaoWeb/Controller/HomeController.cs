@@ -66,14 +66,14 @@ namespace AvaliacaoWeb.Controller
             //Faça as correções e alterações que achar necessária.
 
             //Dica: há um outro TESTE que requer adicionar um filtro, então vai ser necessário adicionar aqui.
-           // const int de23h59m59s = 86399;
-           /*
-            * Se o problema da constante é ter sempre esse numero de horas. Acredito que seja mais simples e bem melhor de se visiualizar em DateTime
-            * Ao invés de adicionar a constante de 23h 59m e 59s, eu adicionei um dia inteiro, e retirei 1 segundo.
-            * 
-            * 
-            * 
-            */
+            // const int de23h59m59s = 86399;
+            /*
+             * Se o problema da constante é ter sempre esse numero de horas. Acredito que seja mais simples e bem melhor de se visiualizar em DateTime
+             * Ao invés de adicionar a constante de 23h 59m e 59s, eu adicionei um dia inteiro, e retirei 1 segundo.
+             * 
+             * 
+             * 
+             */
             //
 
             if (!string.IsNullOrWhiteSpace(pesquisa.Nome))
@@ -84,7 +84,12 @@ namespace AvaliacaoWeb.Controller
             if (!string.IsNullOrWhiteSpace(pesquisa.CPF.ToString()))
             {
                 busca.CpfLike(pesquisa.CPF.ToString());
-            }           
+            }
+            // Adicionado Filtro pro RG
+            if (pesquisa.RG.HasValue)
+            {
+                busca.RGLike(pesquisa.RG.ToString());
+            }
             if (pesquisa.CadastroDe.HasValue)
             {
                 busca.Propriedade(x => x.HoraCadastro >= pesquisa.CadastroDe);
@@ -96,12 +101,13 @@ namespace AvaliacaoWeb.Controller
 
             if (pesquisa.NascimentoDe.HasValue)
             {
-                busca.Propriedade(x => x.DataNascimento  >= pesquisa.NascimentoDe);
+                busca.Propriedade(x => x.DataNascimento >= pesquisa.NascimentoDe);
             }
             if (pesquisa.NascimentoAte.HasValue)
             {
                 busca.Propriedade(x => x.DataNascimento <= pesquisa.NascimentoAte.Value.AddDays(1).AddSeconds(-1));
             }
+         
         }
         
         public IActionResult Cadastro()
