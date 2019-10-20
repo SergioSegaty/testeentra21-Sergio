@@ -65,9 +65,21 @@
                        onchange="Consulta.dataFormat(event)"
                        placeholder="30/12/1950">
             </div>
-        </div>
-        <div class="form-buttons">
-            <button type="button" class="btn btn-primary" onclick="Consulta.pesquisar()">Pesquisar</button>
+            <div class="form-group col-md-6">
+                @if (Configuracao.Instancia.EhSantaCatarina)
+                {
+                    <label for="nomeCliente">RG contém</label>
+                    <input type="text" class="form-control" id="rgCliente"
+                           onkeyup="Consulta.rgFormat(event)"
+                           onkeypress="Consulta.rgFormat(event)"
+                           onkeydown="Consulta.rgFormat(event)"
+                           onchange="Consulta.rgFormat(event)"
+                           placeholder="12.345.678-9">
+                }
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="btn btn-primary" onclick="Consulta.pesquisar()">Pesquisar</button>
+            </div>
         </div>
     </div>
     <table class="table">
