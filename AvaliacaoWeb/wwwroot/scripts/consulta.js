@@ -115,7 +115,6 @@
 
     static obterRG() {
         var $campoRG = $("#rgCliente");
-        debugger;
         var $rg = "";
         if ($campoRG.length < 1) {
             $rg = "";
