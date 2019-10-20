@@ -31,7 +31,7 @@
         if ($(id).hasClass('invalid')) return null;
         return $(id).val() || null;
     }
-       
+
     static eValidoCPF(strCPF) {
         var soma;
         var resto;
@@ -112,6 +112,23 @@
     }
 
 
+
+    static obterRG() {
+        var $campoRG = $("#rgCliente").val();
+        debugger;
+        var $rg = "";
+        if ($campoRG = undefined) {
+            $rg = "";
+        } else {
+
+            $rg = $("#rgCliente").val().replace(/\D/g, "");
+        }
+
+        return $rg
+
+    };
+
+
     static pesquisar(pagina) {
         var pesquisa = {
             Pagina: pagina || 1,
@@ -121,7 +138,7 @@
             CadastroAte: Consulta.obterData("dataCadAte"),
             Nome: $("#nomeCliente").val(),
             Cpf: $("#cpfCliente").val().replace(/\D/g, ""),
-            Rg: $("#rgCliente").val().replace(/\D/g, "")
+            Rg: Consulta.obterRG()
         }
         $('table tbody tr').remove();
         var load = (tb) => {
@@ -168,12 +185,12 @@
                 r.append(col);
             };
 
-            
+
             let cpfFormatado = String(c.cpf);
             cpfFormatado = cpfFormatado.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
             let rgFormatado = String(c.rg);
             rgFormatado = rgFormatado.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4");
-            
+
 
             carregaColuna(c.nome, row);
             carregaColuna(cpfFormatado, row);
@@ -185,7 +202,7 @@
             tb.append(row);
         }
 
-       
+
 
 
 
