@@ -79,6 +79,40 @@
         return (resto == parseInt(strCPF.substring(10, 11)));
     }
 
+    static rgFormat(evt) {
+        var numeroRG = evt.target.value.replace(/\D/g, "");
+        numeroRG = numeroRG.substring(0, 9);
+        if (numeroRG.length != 9) {
+            $(evt.target).addClass("invalid");
+        } else {
+            $(evt.target).removeClass("invalid");
+        }
+        var builder = [];
+        if (numeroRG.length <= 2) {
+            builder.push(numeroRG)
+        } else {
+            builder.push(numeroRG.substr(0, 2));
+            builder.push('.');
+            if (numeroRG.length <= 5) {
+                builder.push(numeroRG.substr(2));
+            } else {
+                builder.push(numeroRG.substr(2, 3));
+                builder.push('.');
+                if (numeroRG.length <= 8) {
+                    builder.push(numeroRG.substr(5));
+                } else {
+                    builder.push(numeroRG.substr(5, 3));
+                    if (numeroRG.length === 9) {
+                        builder.push('-');
+                        builder.push(numeroRG.substr(8));
+                    }
+                }
+            }
+        }
+        evt.target.value = builder.join('');
+    }
+    
+
     static cpfFormat(evt) {
         var numero = evt.target.value.replace(/\D/g, "");
         numero = numero.substr(0, 11);
@@ -143,16 +177,16 @@
         }
         evt.target.value = builder.join('');
     }
-
-    static formataRg(evt) {
-        var numero = evt.target.value.replace(/\D/g, "");
-        if (numero.length === 0) {
-            $(evt.target).addClass("invalid");
-        } else {
-            $(evt.target).removeClass("invalid");
-        }
-        evt.target.value = numero;
-    }
+    // Deprecado
+    //static ehRGValido(numero) {
+    //    var numero = evt.target.value.replace(/\D/g, "");
+    //    if (numero.length === 0) {
+    //        $(evt.target).addClass("invalid");
+    //    } else {
+    //        $(evt.target).removeClass("invalid");
+    //    }
+    //    evt.target.value = numero;
+    //}
 
     static salvarCadastro() {
         if (!Cadastro.formularioCorreto()) {
