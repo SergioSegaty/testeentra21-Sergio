@@ -6,9 +6,10 @@ namespace AvaliacaoWeb.Model
     {
         public int Pagina { get; set; }
         public string Nome { get; set; }
-        //Pesquisa por CPF?
+        //Pesquisa por CPF
         public long? CPF { get; set; }
-        //
+        //Pesquisa por RG
+        public long? RG { get; set; }
         public DateTime? NascimentoDe { get; set; }
         public DateTime? NascimentoAte { get; set; }
         public DateTime? CadastroDe { get; set; }

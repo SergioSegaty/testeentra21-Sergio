@@ -14,5 +14,10 @@ namespace AvaliacaoCore.DB
         {
             return that.Propriedade(x => EF.Functions.Like(x.CPF.ToString(), "%" + comparacao + "%"));
         }
+
+        public static IBuscaComFiltro<Cadastro> RGLike(this IBuscaComFiltro<Cadastro> that, string comparacao)
+        {
+            return that.Propriedade(x => EF.Functions.Like(x.RG.ToString(), "%" + comparacao + "%"));
+        } 
     }
 }
