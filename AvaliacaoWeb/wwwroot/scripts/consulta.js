@@ -114,13 +114,12 @@
 
 
     static obterRG() {
-        var $campoRG = $("#rgCliente").val();
+        var $campoRG = $("#rgCliente");
         debugger;
         var $rg = "";
-        if ($campoRG = "undefined") {
+        if ($campoRG.length < 1) {
             $rg = "";
         } else {
-
             $rg = $("#rgCliente").val().replace(/\D/g, "");
         }
 
