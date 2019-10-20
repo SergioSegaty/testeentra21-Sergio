@@ -28,6 +28,7 @@ namespace AvaliacaoCore.DB.Model
 
         //PLUS: eiste uma maneira de fazer o código entender diretamente que uma string pode ser um número de Telefone, possibilitando algo como: Telefone tel = "9922223333";
         // Este método seria a Interpolação de Strings? Interpolando, e colocando o valor de Numero(long) dentro de uma interpolação de texto, eu transformo o numero em string.
+        // Ou também poderia ser o método ToString()? que pega um outro tipo de variavel e tenta converter para String.
             
         //implemente o código necessário para isso.
 
