@@ -84,13 +84,9 @@
     }
 
     static rgFormat(evt) {
+        debugger;
         var numeroRG = evt.target.value.replace(/\D/g, "");
-        numeroRG = numeroRG.substring(0, 9);
-        if (numeroRG.length != 9) {
-            $(evt.target).addClass("invalid");
-        } else {
-            $(evt.target).removeClass("invalid");
-        }
+        numeroRG = numeroRG.substr(0, 9);
         var builder = [];
         if (numeroRG.length <= 2) {
             builder.push(numeroRG)
