@@ -228,7 +228,6 @@
     }
 
     static formularioCorreto() {
-        debugger;
         var email = $("#EmailCliente").val();
         var reggex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (!$("#cpfCliente").val() || $("#cpfCliente").hasClass('invalid')) {

@@ -84,7 +84,6 @@
     }
 
     static rgFormat(evt) {
-        debugger;
         var numeroRG = evt.target.value.replace(/\D/g, "");
         numeroRG = numeroRG.substr(0, 9);
         var builder = [];
