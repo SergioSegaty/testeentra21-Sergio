@@ -34,7 +34,7 @@ namespace AvaliacaoTesteManual
                     RG = 160954022,
                     Email = "algumacoisa@alguma.com",
                     UF = uf,
-                    Salario = 4450.00
+                    Salario = 1800.00
                 });
             }
         }

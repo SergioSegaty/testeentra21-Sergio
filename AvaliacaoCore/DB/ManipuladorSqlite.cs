@@ -63,6 +63,7 @@ namespace AvaliacaoCore.DB
             if (salario < faixa1)
             {
                 impostoRenda = 0;
+                return impostoRenda;
             }
             else
             {
