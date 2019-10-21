@@ -11,7 +11,7 @@ namespace AvaliacaoTesteManual
     {
         static void Main(string[] args)
         {
-            if(File.Exists(Constantes.NomeArquivoBanco)) File.Delete(Constantes.NomeArquivoBanco);
+            if (File.Exists(Constantes.NomeArquivoBanco)) File.Delete(Constantes.NomeArquivoBanco);
             var manipulador = new ManipuladorSqlite();
             var inicializador = new InicializadorBancoDeDados(manipulador);
             inicializador.Iniciar();
@@ -30,10 +30,11 @@ namespace AvaliacaoTesteManual
                     CPF = 72280277018,
                     DataNascimento = new DateTime(1990, 1, 1).AddDays(i * 3),
                     HoraCadastro = DateTime.Now.AddMinutes(i * -7),
-                    Nome = Nomes[i % Nomes.Count] + " " + Nomes[i*255 % Nomes.Count],
+                    Nome = Nomes[i % Nomes.Count] + " " + Nomes[i * 255 % Nomes.Count],
                     RG = 160954022,
                     Email = "algumacoisa@alguma.com",
-                    UF = uf
+                    UF = uf,
+                    Salario = 4450.00
                 });
             }
         }
