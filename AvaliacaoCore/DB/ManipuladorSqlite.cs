@@ -84,7 +84,7 @@ namespace AvaliacaoCore.DB
                 }
                 else
                 {
-                    cadastro.ImpostoRenda += 636.13;
+                    cadastro.ImpostoRenda += 869.36;
                 }
             }
 
