@@ -10,12 +10,14 @@ namespace AvaliacaoCore.RegraDeNegocio.Validacoes.Cadastro
     {
         public ResultadoValidacao Validar(DB.Model.Cadastro model)
         {
-
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            
+             String regex = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                          + "@"
+                           + @"((([\-\w]+\.)+[a-zA-Z]{2,8})|(([0-9]{1,3}\.){3}[0-9]{1,3}))\z";
             if (model.Email != null)
             {
-                Match match = regex.Match(model.Email);
-                if (match.Success)
+
+                if (Regex.IsMatch(model.Email, regex))
                 {
                     return Valido();
                 }
